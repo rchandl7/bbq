@@ -4,15 +4,15 @@ var url, url_bk, mobile, desktop, connected1, connected2, mobile_bk, desktop_bk,
 
 function bbq() {
 	var txt;
-	var gameId = prompt("Please enter game ID:", "210");
+	var gameId = prompt("Please enter game ID:", "");
 //	if (gameId == null || gameId == "") 
 //	{
 //		txt = "Nevermind.";
 //	} 
 //	else 
 //	{ 
-		var url = "http://dataint.ncaa.com/4/mml/2019/mobile/video/" + gameId + ".json";
-		var url_bk = "http://dataint.ncaa.com/4/mml/2019/mobile/video/" + gameId + "_bk.json";
+		var url = "https://dataint.ncaa.com/4/mml/2019/mobile/video/" + gameId + ".json";
+		var url_bk = "https://dataint.ncaa.com/4/mml/2019/mobile/video/" + gameId + "_bk.json";
 		partials(url)
 		partials_bk(url_bk)
 		//printing video jsons to console
@@ -88,9 +88,9 @@ function partials_bk(val) {
 
 function tokenize(val,val1,val2,val3,val4) {
 	var partial = val
-	var tempslug = partial.slice(36);
+	var tempslug = partial.slice(37);
 	var slug = tempslug.slice(0, -15);
-	var tokenUrl = "http://ite.token.ngtv.io/token/internal/token_spe?format=m3u8&path=/" + slug + "/&accessTokenTTL=30000&profile=mml";
+	var tokenUrl = "https://ite.token.ngtv.io/token/internal/token_spe?format=m3u8&path=/" + slug + "/&accessTokenTTL=30000&profile=mml";
 	console.log(tokenUrl);
 	var xmlhttp = new XMLHttpRequest();
 	console.log("Fetching token..");
