@@ -1,0 +1,42 @@
+<html>
+<head>
+	<script src="https://video-dev.github.io/hls.js/dist/hls.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="bbq.js"></script>
+	<style>
+		div {
+			color: #fff;
+		    font-family: Tahoma, Verdana, Segoe, sans-serif;
+		    padding: 1px;
+		}
+		.container {
+		    background-color:#d7d8db;
+		    display:flex;
+		}
+		.fixed {
+		    background-color:#4c81ff;
+		    width: 400px;
+		}
+		.flex-item {
+		    background-color:#d7d8db;
+		    flex-grow: 1;
+		    color: black;
+		}
+		button {
+			background-color:#4c81ff;
+			color: white;
+		}
+	</style>
+	
+</head>
+<body>
+ <button onclick="bbq()">Enter Game ID</button> 
+
+<div class="container">
+    <div id="primaryLoad" class="fixed"><h1>Primary</h1></div>
+    <div id="backupLoad" class="flex-item"><h1>Backup</h1></div>
+</div>
+
+
+</body>
+</html>
