@@ -1,67 +1,83 @@
 <html>
-	<script src="https://video-dev.github.io/hls.js/dist/hls.js"></script>
-<body>	
-<h4>Mobile</h4>
-<video id="mob_bk" width="320" height="240" muted="true"></video>
-<script>
-  var mob = document.getElementById('mobile');
-  if(Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource('https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8');
-    console.log(mobile_bk)
-    hls.attachMedia(mob);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
-      mob.play();
-  });
-  }
-  // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
-  // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element throught the `src` property.
-  // This is using the built-in support of the plain video element, without using hls.js.
-   else if (mob.canPlayType('application/vnd.apple.mpegurl')) {
-     mob.src = 'https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8';
-          mob.addEventListener('canplay',function() {
-            mob.play();
-          });
-        }
-</script>
-<h4>Desktop</h4>
-<video id="des_bk" width="320" height="240" muted="true"></video>
-<script>
-  var des = document.getElementById('desktop');
-  if(Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(desktop_bk);
-    hls.attachMedia(des);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
-      des.play();
-  });
- }
-</script>
-<h4>Connected1</h4>
-<video id="conn1_bk" width="320" height="240" muted="true"></video>
-<script>
-  var conn1 = document.getElementById('connected1');
-  if(Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(connected1_bk);
-    hls.attachMedia(conn1);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
-      conn1.play();
-  });
- }
-</script>
-<h4>Connected2</h4>
-<video id="conn2_bk" width="320" height="240" muted="true"></video>
-<script>
-  var conn2 = document.getElementById('connected2');
-  if(Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(connected2_bk);
-    hls.attachMedia(conn2);
-    hls.on(Hls.Events.MANIFEST_PARSED,function() {
-      conn2.play();
-  });
- }
-</script>
-</body>
+	<head>
+	
+	</head>
+	<body>
+		<script src="https://hls-js.netlify.com/dist/hls.js"></script>
+		<h2>Backup</h2>
+		<h5 id="path"></h5>
+		<h4>Mobile</h4>
+		<p id="mo"></p>
+		<video id="player_mo_bk" controls preload="auto" width="320" height="178" muted="true">
+		</video>
+		<script>
+		  if(Hls.isSupported()) {
+          var video = document.getElementById('player_mo_bk');
+          var hls = new Hls();
+          hls.loadSource(window.localStorage.getItem('mo_bk'));
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+       }
+   		</script>
+			
+	
+		<h4>Desktop</h4>
+		<p id="de"></p>
+		<video id="player_de_bk" controls preload="auto" width="320" height="178" muted="true">
+				</video>
+		<script>
+		  if(Hls.isSupported()) {
+          var video = document.getElementById('player_de_bk');
+          var hls = new Hls();
+          hls.loadSource(window.localStorage.getItem('de_bk'));
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+       }
+   		</script>
+	
+	
+		<h4>Connected1</h4>
+		<p id="conn1"></p>
+		<video id="player_connected1_bk" controls preload="auto" width="320" height="178" muted="true">
+		</video>
+		<script>
+		  if(Hls.isSupported()) {
+          var video = document.getElementById('player_connected1_bk');
+          var hls = new Hls();
+          hls.loadSource(window.localStorage.getItem('connected1_bk'));
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+       }
+   		</script>
+	
+	
+		<h4>Connected2</h4>
+		<p id="conn2"></p>
+		<video id="player_connected2_bk" controls preload="auto" width="320" height="178" muted="true">
+		</video>
+		<script>
+		  if(Hls.isSupported()) {
+          var video = document.getElementById('player_connected2_bk');
+          var hls = new Hls();
+          hls.loadSource(window.localStorage.getItem('connected2_bk'));
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {
+            video.play();
+        });
+       }
+   		</script>
+		<script>
+			document.getElementById("path").innerHTML = localStorage.getItem("backup_path");
+			document.getElementById("mo").innerHTML = localStorage.getItem("mo_bk");
+			document.getElementById("de").innerHTML = localStorage.getItem("de_bk");
+			document.getElementById("conn1").innerHTML = localStorage.getItem("connected1_bk");
+			document.getElementById("conn2").innerHTML = localStorage.getItem("connected2_bk");			
+		</script>
+	</body>
 </html>
